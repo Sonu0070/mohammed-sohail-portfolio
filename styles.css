@@ -697,6 +697,33 @@ textarea {
   margin-top: 1.2rem;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.15rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(77, 183, 255, 0.94), rgba(55, 226, 199, 0.92));
+  box-shadow: 0 12px 28px rgba(77, 183, 255, 0.18);
+}
+
+.project-link.secondary {
+  color: var(--text);
+  background: rgba(8, 18, 31, 0.72);
+  border: 1px solid rgba(77, 183, 255, 0.16);
+  box-shadow: none;
+}
+
 .timeline-card {
   display: grid;
   gap: 1rem;
