@@ -554,12 +554,30 @@ textarea {
   font-size: clamp(2rem, 4vw, 4rem);
 }
 
+.section-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 .about-grid,
 .lab-grid,
 .contact-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.2rem;
   margin-top: 2rem;
+}
+
+.update-grid,
+.notes-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.update-grid,
+.notes-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .story-card,
@@ -569,7 +587,9 @@ textarea {
 .timeline-card,
 .terminal-card,
 .contact-card,
-.contact-form {
+.contact-form,
+.update-card,
+.note-card {
   border-radius: var(--radius-xl);
 }
 
@@ -578,7 +598,9 @@ textarea {
 .timeline-card,
 .terminal-card,
 .contact-card,
-.contact-form {
+.contact-form,
+.update-card,
+.note-card {
   padding: 1.6rem;
 }
 
@@ -586,6 +608,8 @@ textarea {
 .profile-row span,
 .focus-card p,
 .project-card p,
+.update-card p,
+.note-card p,
 .timeline-item p,
 .terminal-body p,
 .contact-card a,
@@ -624,6 +648,8 @@ textarea {
 
 .focus-card::before,
 .project-card::before,
+.update-card::before,
+.note-card::before,
 .contact-card::before,
 .contact-form::before {
   content: "";
@@ -636,15 +662,35 @@ textarea {
 
 .focus-card h3,
 .project-card h3,
+.update-card h3,
+.note-card h3,
 .contact-card h3 {
   margin-top: 0;
   font-size: 1.2rem;
+}
+
+.update-card,
+.note-card {
+  position: relative;
+  border: 1px solid rgba(77, 183, 255, 0.14);
+  background: linear-gradient(180deg, rgba(10, 20, 35, 0.84), rgba(5, 11, 22, 0.84));
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
 }
 
 .project-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 2rem;
+}
+
+.project-phase-heading {
+  margin: 2.2rem 0 0.4rem;
+  color: var(--muted);
+  font-family: "Oxanium", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .project-card {
@@ -695,6 +741,12 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, max-content));
   gap: 0.7rem;
   margin-top: 1.2rem;
+}
+
+.project-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .project-links {
@@ -806,6 +858,11 @@ textarea {
   gap: 1rem;
 }
 
+.contact-card small {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .contact-card a,
 .contact-copy {
   display: inline-flex;
@@ -825,6 +882,23 @@ textarea {
 .contact-form {
   display: grid;
   gap: 1rem;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.note-date {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: var(--teal);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .contact-form input,
@@ -896,6 +970,8 @@ textarea {
   .about-grid,
   .lab-grid,
   .contact-grid,
+  .update-grid,
+  .notes-grid,
   .focus-grid,
   .project-grid,
   .metrics {

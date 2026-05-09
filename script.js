@@ -11,6 +11,9 @@ const heroVisual = document.querySelector(".hero-visual");
 const scrollProgress = document.querySelector(".scroll-progress");
 const cursorGlow = document.querySelector(".cursor-glow");
 const tiltCards = document.querySelectorAll(".tilt-card");
+const contactForm = document.querySelector(".contact-form");
+const formNextUrl = document.getElementById("form-next-url");
+const formPageUrl = document.getElementById("form-page-url");
 
 const roles = [
   "AI Security Analyst",
@@ -87,6 +90,7 @@ const counterObserver = new IntersectionObserver(
       if (!entry.isIntersecting) return;
 
       const target = Number(entry.target.dataset.counter || 0);
+      const suffix = entry.target.dataset.suffix || "";
       let current = 0;
       const increment = Math.max(1, Math.ceil(target / 50));
 
@@ -96,7 +100,7 @@ const counterObserver = new IntersectionObserver(
           current = target;
           clearInterval(counter);
         }
-        entry.target.textContent = current;
+        entry.target.textContent = `${current}${suffix}`;
       }, 32);
 
       counterObserver.unobserve(entry.target);
@@ -134,6 +138,20 @@ copyButtons.forEach((button) => {
     }
   });
 });
+
+if (contactForm && formNextUrl && formPageUrl) {
+  const currentUrl = new URL(window.location.href);
+  currentUrl.hash = "";
+  currentUrl.search = "";
+
+  if (currentUrl.pathname.endsWith("index.html")) {
+    currentUrl.pathname = currentUrl.pathname.replace(/index\.html$/, "");
+  }
+
+  const normalizedBase = currentUrl.toString();
+  formPageUrl.value = normalizedBase;
+  formNextUrl.value = new URL("success.html", normalizedBase).toString();
+}
 
 document.addEventListener("mousemove", (event) => {
   const x = `${(event.clientX / window.innerWidth) * 100}%`;
